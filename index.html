@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart</title>
+    <link rel="stylesheet" href="App/css/controle.css">
+    <link rel="stylesheet" href="App/css/header.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <header class="bg-dark">
+
+            <nav class="d-flex flex-row justify-content-around mx-auto">
+                <div class="nav">conta</div>
+                <div class="nav">hanking</div>
+                <div class="nav">pontuações</div>
+                <div class="nav">configurações</div>
+                <div class="nav">sair</div>
+            </nav>
+        
+    </header>
+
+
+    <form action="" class="container">
+
+        <div class="d-flex flex-row justify-content-around mx-auto" id="pontuacao">
+            <button class="btn btn-dark" id="reiniciar">reiniciar</button>
+            <p class="titulo-potuacao text-dark">tempo: 3 min</p>
+            <p class="titulo-potuacao">acertos: 3</p>
+            <p class="titulo-potuacao">erros: 3</p>
+            <p class="titulo-potuacao">textos: 5/10</p> 
+        </div>
+        
+       
+
+        <div class="textos row">
+            <textarea name="" id="texto" cols="30" rows="10" class="col-md-6 form-control"></textarea>
+            <div class="col-md-6 ">
+                <h3>texto</h3>
+                    Etiam posuere quam ac quam. Maecenas aliquet accumsan leo. Nullam dapibus fermentum 
+                    ipsum. Etiam quis quam. Integer lacinia. Nulla est. Nulla turpis magna, cursus sit amet,
+                    suscipit a, interdum id, felis. Integer vulputate sem a nibh rutrum consequat. Maecenas
+                    lorem. Pellentesque pretium lectus id turpis. Etiam sapien elit, consequat eget, 
+                    tristique non, venenatis quis, ante. Fusce wisi. Phasellus faucibus molestie nisl. 
+                    Fusce eget urna. Curabitur vitae diam non enim vestibulum interdum. Nulla quis diam.
+                    Ut tempus purus at lorem.
+
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at 
+                    pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet 
+                    ante. Aliquam erat volutpat. Nunc auctor. 
+                <button class="btn btn-dark float-right" id="enviar">trocar texto</button>
+            </div>
+        </div>
+        
+        <div class="botoes-form">
+            <button class="btn btn-success" id="enviar">enviar</button>
+            <button type="reset" class="btn btn-dark">apagar</button>
+        </div>    
+    </form>
+
+
+</body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+
+    <script src="App/js/app.js"></script>
+</html>

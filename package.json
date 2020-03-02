@@ -1,0 +1,22 @@
+{
+  "name": "smart-text",
+  "version": "1.0.0",
+  "description": "aplicativo de escrita correta de texto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start": "tsc -w"
+  },
+  "keywords": [
+    "jogo"
+  ],
+  "author": "nicholas lima",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/jquery": "^2.0.42"
+  }
+}

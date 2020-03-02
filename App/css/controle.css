@@ -1,0 +1,15 @@
+
+
+.botoes-form{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#pontuacao{
+    width: 700px;
+    margin: 20px
+}
+
+.titulo-potuacao{
+    text-transform: capitalize;
+}

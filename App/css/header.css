@@ -1,0 +1,11 @@
+nav{
+    color: white;
+    text-transform: capitalize;
+    width: 650px;
+}
+
+header{
+    height: 110px;
+    margin-bottom: 25px;
+    padding-top: 35px;
+}
