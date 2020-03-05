@@ -22,14 +22,14 @@
     </header>
 
 
-    <form action="" class="container">
+    <form action="" class="container" id="formulario">
 
         <div class="d-flex flex-row justify-content-around mx-auto" id="pontuacao">
             <button class="btn btn-dark" id="reiniciar">reiniciar</button>
-            <p class="titulo-potuacao text-dark">tempo: 3 min</p>
-            <p class="titulo-potuacao">acertos: 3</p>
-            <p class="titulo-potuacao">erros: 3</p>
-            <p class="titulo-potuacao">textos: 5/10</p> 
+            <p class="titulo-potuacao text-dark">tempo: <p id="tempo"></p> min</p>
+            <p class="titulo-potuacao">acertos: <p id="acertos"></p></p>
+            <p class="titulo-potuacao">erros: <p id="erros"></p></p>
+            <p class="titulo-potuacao">textos: <p id="textos"></p></p> 
         </div>
         
        
@@ -38,18 +38,10 @@
             <textarea name="" id="texto" cols="30" rows="10" class="col-md-6 form-control"></textarea>
             <div class="col-md-6 ">
                 <h3>texto</h3>
-                    Etiam posuere quam ac quam. Maecenas aliquet accumsan leo. Nullam dapibus fermentum 
-                    ipsum. Etiam quis quam. Integer lacinia. Nulla est. Nulla turpis magna, cursus sit amet,
-                    suscipit a, interdum id, felis. Integer vulputate sem a nibh rutrum consequat. Maecenas
-                    lorem. Pellentesque pretium lectus id turpis. Etiam sapien elit, consequat eget, 
-                    tristique non, venenatis quis, ante. Fusce wisi. Phasellus faucibus molestie nisl. 
-                    Fusce eget urna. Curabitur vitae diam non enim vestibulum interdum. Nulla quis diam.
-                    Ut tempus purus at lorem.
-
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at 
-                    pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet 
-                    ante. Aliquam erat volutpat. Nunc auctor. 
-                <button class="btn btn-dark float-right" id="enviar">trocar texto</button>
+                    <p id="texto2">Etiam posuere quam ac quam. Maecenas aliquet accumsan leo. Nullam dapibus fermentum ipsum. Etiam quis quam. Integer lacinia. Nulla est. Nulla turpis magna, cursus sit amet,suscipit a, interdum id, felis. Integer vulputate sem a nibh rutrum consequat. Maecenas lorem. Pellentesque pretium lectus id turpis. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Fusce wisi. Phasellus faucibus molestie nisl. Fusce eget urna. Curabitur vitae diam non enim vestibulum interdum. Nulla quis diam.Ut tempus purus at lorem.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. Aliquam erat volutpat. Nunc auctor.
+                    </p>
+                     
+                <button class="btn btn-dark float-right" id="trocar">trocar texto</button>
             </div>
         </div>
         
@@ -66,5 +58,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
 
+    <script src="App/js/Models/jogador.js"></script>
+    <script src="App/js/Controllers/ControleController.js"></script>
     <script src="App/js/app.js"></script>
 </html>
