@@ -7,6 +7,7 @@ const tempo = $("#tempo").text();
 const acertosElemento = $("#acertos");
 const errosElemento = $("#erros");
 const tempoElemento = $("#tempo");
+const textoAlunoElemento = $("#textoAluno");
 
 var controle = new ControleController();
 
@@ -28,10 +29,11 @@ document.getElementById("textoAluno").oninput = (input) => {
     controle.setLetraAtual(letra);
     const textoQtd = textoAluno.length;
       
-       controle.comparartexto(
+      /* controle.comparartexto(
                     controle.setTamanho(
                         controle.filtroCorrecaoUsuario(textoQtd))
-                    );
-                 
+                    );*/
+    controle.comparartexto(textoQtd);             
 };
+
 

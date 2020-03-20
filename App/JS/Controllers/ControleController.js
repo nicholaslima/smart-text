@@ -1,15 +1,11 @@
 class ControleController {
     constructor() {
-        this._acertos = 0;
-        this._erros = 0;
         this._tempo = 10;
         this._textoAluno;
         this._textoTeste;
-        this._tamanhoDigitado = 0;
         this._letraAtual;
         this._posicoesErros = [];
-        this._inputsTeste;
-        this._inputsAluno;
+        this._posicoesAcertos = [];
 
         this._acertosElemento;
         this._errosElemento;
@@ -45,73 +41,54 @@ class ControleController {
         this._letraAtual = letra;
     }
 
-    comparartexto(valido) {
-        if(valido !== false){
-            if(this._textoAluno[this._tamanhoDigitado - 1] === this._textoTeste[this._tamanhoDigitado - 1]) {
-                this._acertos++;
+
+    comparartexto(textoQtd){
+        if(!this.verificaErro(textoQtd)){
+            if(this._letraAtual == this._textoTeste[textoQtd - 1]) {
+                this.capturarAcertos(textoQtd -1);
+                console.log(this._posicoesAcertos);
             }
             else {
-                this._erros++;
-                this.capturarErros(this._tamanhoDigitado -1);
+                this.capturarErros(textoQtd -1);
                 console.log(this._posicoesErros);
-            }  
+            }     
             this.setPontuacao();
         }
     }
 
-    dividirTextoTeste(){
-        this._inputsTeste = this._textoTeste.split();
+    verificaErro(textoQtd){
+        if(this.encontrarErros(textoQtd)){
+            this._posicoesErros.pop();
+            console.log(this._posicoesErros);
+            this.setPontuacao();
+            return true;
+        }else if(this.encontrarAcertos(textoQtd)){
+            this._posicoesAcertos.pop();
+            console.log(this._posicoesAcertos);
+            this.setPontuacao();
+            return true;
+        }
     }
-
-    dividirTextoAluno(){
-        this._inputsAluno = this._textoAluno.split();
-    }
+    
 
     capturarErros(posicao){
         this._posicoesErros.push(posicao);
     }
 
-    setTamanho(tamanho){
-        if(tamanho !== false){
-            this._tamanhoDigitado = tamanho;
-            return this._tamanhoDigitado;
-        }else{
-            return false;
-        }
-    }
-
-    filtroCorrecaoUsuario(textoQtd){
-        if(textoQtd < this._tamanhoDigitado){
-            if(this.encontrarErros(textoQtd)){
-                console.log(this._posicoesErros.splice(textoQtd));
-                this._erros--;
-                this.setPontuacao();
-            }else{
-                this._acertos--;
-                this.setPontuacao();
-            }
-            console.log(this._tamanhoDigitado);
-            console.log(textoQtd);
-            console.log(this.encontrarErros(textoQtd));
-            console.log(this._posicoesErros);
-            console.log(this._posicoesErros);
-            console.log(this._posicoesErros);
-            this.dividirTextoTeste();
-            this.dividirTextoAluno();
-            console.log(this._inputsTeste);
-            console.log(this._inputsAluno);
-            return false;
-        }else{
-            return textoQtd;
-        }
+    capturarAcertos(posicao){
+        this._posicoesAcertos.push(posicao);
     }
 
     encontrarErros(textoQtd){
         return this._posicoesErros.includes(textoQtd);
     }
 
+    encontrarAcertos(textoQtd){
+        return this._posicoesAcertos.includes(textoQtd);
+    }
+
     setPontuacao(){
-        this._acertosElemento.text(this._acertos);
-        this._errosElemento.text(this._erros);
+        this._acertosElemento.text(this._posicoesAcertos.length);
+        this._errosElemento.text(this._posicoesErros.length);
     }
 }
