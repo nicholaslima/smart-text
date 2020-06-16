@@ -1,5 +1,13 @@
 class ControleController {
     constructor() {
+        this._acertosElemento = document.querySelector('#acertos');
+        this._errosElemento = document.querySelector('#erros');
+        this._tempoElemento = document.querySelector('#tempo');
+        this._textoAlunoElemento = document.querySelector('#textoAluno');
+        this._formElemento = document.querySelector('#formulario');
+        this._numTextosElemento = document.querySelector('#textos');
+        this._textoTesteElemento = document.querySelector('#textoTeste');
+        
         this._tempo;
         this._textoAluno;
         this._textoTeste;
@@ -7,13 +15,6 @@ class ControleController {
         this._posicoesErros = [];
         this._posicoesAcertos = [];
         this._idtempo;
-
-        this._acertosElemento;
-        this._errosElemento;
-        this._tempoElemento;
-        this._textoAlunoElemento;
-        this._formElemento;
-        this._numTextosElemento;
     }
 
     getAcertos() {
@@ -22,35 +23,17 @@ class ControleController {
     getErros() {
         return this._erros;
     }
-    setTextoAluno(textoAluno) {
-        this._textoAluno = textoAluno;
-    }
-    setTextoTeste(textoTeste) {
-        this._textoTeste = textoTeste;
+
+    inserirTempo(){
+        this._tempo =  this._tempoElemento.textContent;
     }
 
-    setAcertosElemento(acertosElemento){
-        this._acertosElemento = acertosElemento;
+    setTextAluno(){
+        this.textoAluno = this._textoAlunoElemento.value;
     }
 
-    setErrosElemento(errosElemento){
-        this._errosElemento = errosElemento;
-    }
-
-    setTempoElemento(tempoElemento){
-        this._tempoElemento = tempoElemento;
-    }
-
-    setTextoElemento(textoAlunoElemento){
-        this._textoAlunoElemento = textoAlunoElemento;
-    }
-
-    setNumTextosElemento(numTextos){
-        this._numTextosElemento = numTextos;
-    }
-
-    setFormElemento(form){
-        this._formElemento = form;
+    setTextTeste(){
+        this._textoTeste =  this._textoTesteElemento.textContent;
     }
 
     setLetraAtual(letra){
@@ -62,7 +45,7 @@ class ControleController {
        this.reiniciarTempo();
        this._idtempo = setInterval(() => {
             this._tempo--;
-            this._tempoElemento.text(this._tempo);
+            this._tempoElemento.textContent = this._tempo;
             if(this._tempo <= 0){
                 clearInterval(this._idtempo);
                 this.bloquearJogo();
@@ -75,43 +58,44 @@ class ControleController {
     }
 
     desbloquearJogo(){
-        this._textoAlunoElemento.attr("disabled",false);
-        console.log("desbloquear");
+        this._textoAlunoElemento.removeAttribute("disabled");
     }
 
     apagarTexto(){
-        this._textoAlunoElemento.val('');
+        this._textoAlunoElemento.value = '';
     }
 
     reiniciar(){
         this.apagarTexto();
         this.desbloquearJogo();
-        clearInterval(this._idtempo);
         this.reiniciarTempo();
         this.zerarNotas();
     }
     zerarNotas(){
-        this._acertosElemento.text(0);
-        this._errosElemento.text(0);
-        this._numTextosElemento.text(0);
+        this._acertosElemento.textContent = 0;
+        this._errosElemento.textContent = 0;
+        this._numTextosElemento.textContent = 0;
     }
 
     zerarTemporizador(){
         this.setTempo(0);
-        this._tempoElemento.text(0);
+        this._tempoElemento.textContent = 0;
     }
 
     reiniciarTempo(){
+        clearInterval(this._idtempo);
         this.setTempo(30);
-        this._tempoElemento.text(30);
+        this._tempoElemento.textContent = 30;
     }
 
     bloquearJogo(){
-        this._textoAlunoElemento.attr("disabled","disabled");
+        this._textoAlunoElemento.setAttribute("disabled","disabled");
         this.apagarTexto();
     }
 
     comparartexto(textoQtd){
+        this.setTextAluno();
+        this.setTextTeste();
         if(!this.verificaErro(textoQtd)){
             if(this._letraAtual == this._textoTeste[textoQtd - 1]) {
                 this.capturarAcertos(textoQtd -1);
@@ -153,7 +137,7 @@ class ControleController {
     }
 
     setPontuacao(){
-        this._acertosElemento.text(this._posicoesAcertos.length);
-        this._errosElemento.text(this._posicoesErros.length);
+        this._acertosElemento.textContent = this._posicoesAcertos.length;
+        this._errosElemento.textContent = this._posicoesErros.length;
     }
 }

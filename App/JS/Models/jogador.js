@@ -1,5 +1,5 @@
 class Jogador {
-    constructor(texto, acertos, erros, tempo) {
+    constructor() {
         this._texto = texto;
         this._acertos = acertos;
         this._erros = erros;
