@@ -13,6 +13,6 @@ module.exports = (error,request,response,next) => {
     console.log(error);
        
     return response.status(500).json({
-        message: 'server error'
+        message: error.message
     });
 }

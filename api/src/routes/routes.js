@@ -2,17 +2,17 @@
 const express = require('express');
 const routes = express.Router();
 
-const routesJogador = require('./routesJogador');
-const routesTextos = require('./routesTextos');
-const routesJogo = require('./routesjogo');
+const routesPlayer = require('./routesPlayer');
+const routesTexts = require('./routesTexts');
+const routesGame = require('./routesGame');
 const routesSession = require('./routesSessions');
 
 
-routes.use('/jogador',routesJogador);
-routes.use('/textos',routesTextos);
-routes.use('/jogo',routesJogo);
+routes.use('/player',routesPlayer);
+routes.use('/texts',routesTexts);
+routes.use('/game',routesGame);
 
-routes.use('/login',routesSession);
+routes.use('/user',routesSession);
 
 
 module.exports = routes;
