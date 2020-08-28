@@ -1,6 +1,6 @@
 
 
-class texto{
+class Texto{
     constructor(){
         console.log('texto');
     }

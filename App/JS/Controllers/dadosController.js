@@ -10,7 +10,7 @@ class dadosController{
     }
 
     async buscarTextos(){
-        const resposta = await banco.get('/');
+        const resposta = await banco.get('/textos/');
         this.textos = await resposta.data;
         this.inserirTexto();
     }

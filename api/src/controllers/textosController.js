@@ -12,8 +12,6 @@ module.exports = {
 
         await api('texto').insert(texto);
 
-        return response.json({
-            "mensagem": "texto cadastrado com sucesso"
-        });
+        return response.json(texto);
     }
 }

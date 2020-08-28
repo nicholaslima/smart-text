@@ -1,5 +1,9 @@
 
 const api = require('../helper/conexao.js');
+const jogadorRepository = require('../repository/JogadorRepository');
+const { response } = require('express');
+
+const Repository = new jogadorRepository();
 
 module.exports = {
     async post(request,response){
@@ -14,16 +18,13 @@ module.exports = {
 
         return response.json(jogadores);
     },
-    async jogos(request,response){
-        const { id }  = request.query;
+    async find(request,response){
+       const { id } =  request.params;
+        
+       const jogador = await Repository.findJogador(id);
 
-        const jogos = await api('jogo')
-                        .where('jogador_id',id)
-                        .select('*');
-                        
+       return response.json(jogador);
 
-        console.log(jogos);
-        console.log(id);
-        return response.json(jogos);
     }
+    
 }
