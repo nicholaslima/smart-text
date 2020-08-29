@@ -4,7 +4,7 @@ const AppError = require('../errors/AppErrors');
 
 class PlayerRepository{
 
-    async findPlayer(id){
+    async findPlayerById(id){
         const player = await banco('jogador').where('id',id).select('*').first();
 
         if(!player){
@@ -13,6 +13,17 @@ class PlayerRepository{
 
         return player;
     }
+
+    async findPlayerByEmail(email){
+        const [ player ] = await banco('jogador').where({email}).select('*')
+
+        if(!player){
+            throw new AppError('este jogador não existe',400);
+        }
+        console.log(player);
+        return player;
+    }
+
 
     async playerExist(email){
         const player = await banco('jogador').select('*').where({email});

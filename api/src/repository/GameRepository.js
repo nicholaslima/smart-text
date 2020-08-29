@@ -6,7 +6,7 @@ class GameRepository {
 
     async findByPlayer(id){
         
-        const games  = await api('jogo')
+        const games = await api('jogo')
                         .where('jogador_id',id)
                         .select('*');
 

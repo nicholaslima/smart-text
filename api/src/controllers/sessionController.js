@@ -2,26 +2,17 @@
 const conection = require('../helper/conection');
 const AppError = require('../errors/AppErrors');
 const CreateUser = require('../service/CreateUserService');
-
+const AuthUser = require('../service/AuthUserService');
 module.exports = {
     async auth(request,response){
         const { email,senha } = request.body;
 
-        const [ usuario ] = await conection('jogador').select('id').where('email',email);
+        const authUserService = new AuthUser();
 
-        if(!usuario){
-            throw new AppError('usuario não encontrado,faça seu cadastro',400);
-        }
-
-            const login = await conection('jogador')
-                            .where({
-                                    "senha":senha,
-                                    'email':email
-                                })
-                            .select(['nome','email','senha']);
-
-
-            return response.json(login);
+        const auth = await authUserService.execute({email,senha});
+        
+        return response.json(auth);
+    
     },
     async createUser(request,response){
         const { email,senha,nome,idade,sexo } = request.body;

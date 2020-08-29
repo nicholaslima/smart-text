@@ -32,7 +32,7 @@ module.exports = {
     async gamesPlayer(request,response,next){
         const { id }  = request.query;
 
-        await Player.findPlayer(id);
+        await Player.findPlayerById(id);
 
         const games = await Game.findByPlayer(id);
 

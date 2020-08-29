@@ -17,9 +17,9 @@ module.exports = {
         return response.json(players);
     },
     async find(request,response){
-       const { id } =  request.params;
+       const { id } =  request.query;
         
-       const player = await Player.findPlayer(id);
+       const player = await Player.findPlayerById(id);
 
        return response.json(player);
 
