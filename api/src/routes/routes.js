@@ -8,6 +8,7 @@ const routesGame = require('./routesGame');
 const routesSession = require('./routesSessions');
 
 
+
 routes.use('/player',routesPlayer);
 routes.use('/texts',routesTexts);
 routes.use('/game',routesGame);
