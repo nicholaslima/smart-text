@@ -1,0 +1,83 @@
+
+
+
+import styled from 'styled-components';
+
+
+
+export const Player = styled.div`
+
+    #textoAluno:focus{
+        border: 2pt solid #8257E5; 
+    }
+
+    margin: 0 auto;
+    width: 980px;
+`;
+
+export const TextoAluno = styled.textarea`
+    border: 2pt solid white;
+    border-radius: 15px;
+    margin-top: 20px;
+    width: 100%;
+    padding: 7px;
+    font-size: 16px;
+    font-family: Fira Code;
+    height: 160px;
+    font-weight: 500;
+`;
+
+
+export const TextoApi = styled.p`
+    margin-bottom: 15px;
+    margin-top: 30px;
+`;
+
+export const Pontuacao = styled.div`
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 600px;
+    margin: 0 auto;
+`;
+
+export const TextBlock = styled.p`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const TextoTeste = styled.p`
+    font-weight: 500;
+    color: black;
+    font-family: Fira Code;
+    text-transform: capitalize;
+    margin: 10px 13px;
+`;
+export const ItemTempo = styled.p`  
+    max-width: 980px;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+`;
+
+export const BlockBtns = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    button{
+        margin: 10px;
+    }
+`;
+
+export const Item = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
