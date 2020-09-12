@@ -45,7 +45,6 @@ export default createGlobalStyle`
         font-weight: 700;
         text-transform: capitalize;
         background-color: rgb(32, 32, 36);
-        border: 0px solid rgb(32, 32, 36);
         border-radius: 5px;
         padding: 10px 30px;
         float: right;
@@ -66,5 +65,8 @@ export default createGlobalStyle`
         color: black;
         font-family: Fira Code;
         text-transform: capitalize;
+    }
+    a{
+        text-decoration: none;
     }
 `;

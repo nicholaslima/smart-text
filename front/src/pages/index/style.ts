@@ -8,7 +8,7 @@ import styled from 'styled-components';
 export const Player = styled.div`
 
     #textoAluno:focus{
-        border: 2pt solid #8257E5; 
+        border: 2px solid #8257E5; 
     }
 
     margin: 0 auto;
@@ -25,6 +25,7 @@ export const TextoAluno = styled.textarea`
     font-family: Fira Code;
     height: 160px;
     font-weight: 500;
+
 `;
 
 
@@ -73,6 +74,68 @@ export const BlockBtns = styled.div`
     button{
         margin: 10px;
     }
+
+`;
+
+export const BtnReiniciar = styled.button`
+
+
+    border: 2px solid #F0952D;
+
+        svg{
+            color: #F0952D;
+        }
+
+
+    &&:hover{
+        border: 2px solid #8257E5;
+        svg{
+            color: #8257E5;
+        }
+    }
+`;
+
+export const BtnEnviar = styled.button` 
+     
+    border-color: #00E07B;
+
+    svg{
+        color: #00E07B;
+    }
+    &&:hover{
+        border: 2px solid #8257E5;
+        svg{
+            color: #8257E5;
+        }
+    }
+        
+`;
+
+export const BtnExcluir = styled.button` 
+
+    border-color: #F03D2D;
+
+    svg{
+        color: #F03D2D;
+    }
+    
+    &&:hover{
+        border: 2px solid #8257E5;
+        svg{
+            color: #8257E5;
+        }
+    }
+
+`;
+
+export const BtnTrocar = styled.button` 
+
+    
+    &&:hover{
+        border: 2px solid #8257E5;
+        color: #8257E5;
+    }
+
 `;
 
 export const Item = styled.div`

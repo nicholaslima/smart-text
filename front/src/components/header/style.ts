@@ -11,13 +11,16 @@ export const Container = styled.nav`
     nav{
         display: flex;
         flex-direction: row;
-        max-width: 700px;
+        max-width: 800px;
         font-family: Fira Code;
         font-size: 16px;
         margin: 0 auto;
         text-transform: capitalize;
         color: white;
         justify-content: space-around;
+        a{
+            color: white;
+        }
     }
     
     background-color: #8257E5;

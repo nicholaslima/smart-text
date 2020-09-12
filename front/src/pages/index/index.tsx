@@ -1,11 +1,42 @@
 
 
-import React,{ } from 'react';
-import { Player,Pontuacao,BlockBtns,TextoAluno,TextoApi,TextBlock,TextoTeste,Item,ItemTempo } from './style';
+import React,{ useEffect,useState } from 'react';
+import { Player,Pontuacao,BlockBtns,TextoAluno,TextoApi,TextBlock,TextoTeste,Item,ItemTempo,BtnReiniciar,BtnEnviar,BtnExcluir,BtnTrocar } from './style';
 import Header from '../../components/header/header';
 import { FiCheckCircle,FiRefreshCw,FiTrash } from 'react-icons/fi';
+import api from '../../config/api';
+
 
 const Index: React.FC = () => {
+
+    
+interface Texto{
+    id: number;
+    conteudo: string;
+    titulo: string;
+    dificuldade: string;
+}
+
+    const [ textos,setTexto ] = useState<Texto[]>([]);
+    const [ TextoAtual, setTextoAtual ] = useState(0);
+  
+
+
+    useEffect(() => {
+        api.get('/texts/')
+            .then(response => {
+                setTexto(response.data);
+            });
+        
+    });
+
+    function textoItem(){
+
+        if(textos[TextoAtual] !== undefined ){ 
+            return textos[TextoAtual].conteudo; 
+        }
+    }
+
     return(
         <>
             <Header></Header>
@@ -16,11 +47,20 @@ const Index: React.FC = () => {
                 <Player>
                     <TextoApi>
                         <p className='Title'>titulo</p>
-
                         <TextBlock>
-                            <TextoTeste></TextoTeste>
+                            <TextoTeste>
+                                { textoItem() }
+                            </TextoTeste>
                             
-                            <button className='btnPreto'>trocar texto</button>
+                            <BtnTrocar className='btnPreto'  onClick={ () => {
+                                var value = TextoAtual;
+                                if(textos[TextoAtual] === undefined){
+                                    setTextoAtual(0);
+                                    return;
+                                }
+                                value++;
+                                setTextoAtual(value);
+                            }}>trocar texto</BtnTrocar>
                         </TextBlock>
                         
                     </TextoApi>
@@ -28,9 +68,9 @@ const Index: React.FC = () => {
                 </Player>
                 
                 <BlockBtns>
-                    <button  id="reiniciar" className='btnPreto' style={{ marginRight: '10px' }}><FiRefreshCw size='22px'/></button>
-                    <button  id="enviar" className='btnPreto' style={{ marginRight: '10px' }}><FiCheckCircle size='22px'/></button>
-                    <button className='btnPreto' style={{ marginRight: '10px' }}><FiTrash size='22px' /></button>
+                    <BtnReiniciar  id="reiniciar" className='btnPreto' style={{ marginRight: '10px' }}><FiRefreshCw size='22px'/></BtnReiniciar>
+                    <BtnEnviar  id="enviar" className='btnPreto' style={{ marginRight: '10px' }}><FiCheckCircle size='22px'/></BtnEnviar>
+                    <BtnExcluir className='btnPreto' style={{ marginRight: '10px' }}><FiTrash size='22px' /></BtnExcluir>
                 </BlockBtns>    
 
                 <Pontuacao>
