@@ -1,58 +1,74 @@
 
 
 
-import React,{ useState } from 'react';
+import React,{ useCallback,useRef } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
-import { Form,Titulo,Input,Container} from './style';
+import { Titulo,Container} from './style';
 import Header from '../../components/header/header';
-import api from '../../config/api';
+import { Form } from '@unform/web';
+import Input from '../../components/input';
+import { FiMail,FiUser } from 'react-icons/fi';
+import { useAuth } from '../../context/AuthContext';
+import * as yup  from 'yup';
+import ValidationErrors from '../../utils/validationErrors';
+import { FormHandles } from '@unform/core';
+import { useToast } from '../../context/ToastContext';
 
-interface Data{
-    token: string;
+
+interface LoginType{
+    email: string;
+    senha: string
 }
 
-interface authResp{
-    data: Data;
-}
+const Signin:React.FC = () => {
 
-const Hanking:React.FC = () => {
+    const formRef = useRef<FormHandles>(null);
+    const { Login } = useAuth();
 
-    const [ email,setEmail ] =  useState('');
-    const [ password,setPassword ] =  useState('');
 
-    const userdata = {
-        email,
-        senha: password
-    }
+    const { ativarToast } = useToast();
 
-    async function handdleAuth(){
+    const handdleAuth = useCallback(async (data: LoginType) => {
+            try{
+                const schema = yup.object().shape({
+                    email: yup.string().required('o email é obrigatorio').email('digite um email válido'),
+                    senha: yup.string().required('a senha é obrigatoria'),
+                });
+                
+                await schema.validate(data,{
+                    abortEarly: false
+                });
 
-            const resp: authResp = await api.post('user/auth',userdata);
-            
-            const token = resp.data.token;
-            saveToken(token);
-            limparForm();   
-    }
+                await Login({
+                    email: data.email,
+                    senha: data.senha,
+                });
 
-    function limparForm(){
-        setEmail('');
-        setPassword('');
-    }
+            }catch(err){
+                if(err instanceof yup.ValidationError){
+                    const errors = ValidationErrors(err);
+                    formRef.current?.setErrors(errors);
+                }else{
+                    ativarToast({
+                        type: 'error',
+                        title: 'erro na autenticação',
+                        description: 'ocorreu um erro ao fazer login',
+                    });
+                }
+  
+            }   
+    },[ativarToast,Login]);
 
-    function saveToken(token: string){
-        localStorage.setItem('jwt',token);
-    }
 
     return(
         <>
             <Header></Header>
             <Container>
-                
-                <Form>
+                <Form onSubmit={ handdleAuth  } ref={ formRef }>
                         <Titulo>Entre em sua conta</Titulo>
-                        <Input type="email" placeholder="insira seu email" value={ email } onChange={ (e) => setEmail(e.target.value)} />
-                        <Input type="password" placeholder="insira sua senha"  value={ password } onChange={ (e) => setPassword(e.target.value)}/>
-                        <button type="button" className="btnRoxo" onClick={ handdleAuth }><FiArrowRight></FiArrowRight> login</button>
+                        <Input icon={ FiMail } className="inputSignin" type="text" name="email" placeholder="insira seu email" />
+                        <Input icon={ FiUser } className="inputSignin" type="password" name="senha" placeholder="insira sua senha" />
+                        <button type="submit" className="btnRoxo" ><FiArrowRight></FiArrowRight> login</button>
                 </Form>
             </Container>
         </>
@@ -61,4 +77,4 @@ const Hanking:React.FC = () => {
 
 }
 
-export default Hanking;
+export default Signin;

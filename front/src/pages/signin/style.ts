@@ -2,21 +2,7 @@
 import styled from 'styled-components';
 
 
-export const Input = styled.input`
-    font-family: Fira Code;
-    font-size: 21px;
-    padding: 14px;
-    border: 0px solid white;
-    border-radius: 5px;
-    margin-top: 10px;
-    &&:focus{
-        border: 2px solid #8257E5;
-    }
 
-    &&::placeholder{
-        color: black;
-    }
-`;
 
 export const Form = styled.form`
     display: flex;
@@ -67,6 +53,10 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-around;
     flex-direction: row;
+
+    .inputSignin{
+        width: 560px;
+    }
 `;
 
 

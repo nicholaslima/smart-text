@@ -18,7 +18,7 @@ export const Input = styled.input`
     }
 `;
 
-export const Form = styled.form`
+export const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -67,6 +67,19 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-around;
     flex-direction: row;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        justify-content: center;
+        width: 600px;
+
+        button {
+            margin-top: 25px;
+            font-size: 21px;
+        }
+    }
 `;
 
 

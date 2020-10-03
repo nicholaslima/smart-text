@@ -37,6 +37,8 @@ export default createGlobalStyle`
         border-radius: 5px;
         padding: 10px 30px;
         float: right;
+        width: 100%;
+        margin-top: 10px;
     }
 
     .btnPreto{
