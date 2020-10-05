@@ -22,7 +22,7 @@ const ContentToast: React.FC<ToastType> = ({ message,style }) => {
     useEffect(() => {
        const tempo = setTimeout(() => {
             desativarToast(message.id);
-        },3000);
+        },5000);
 
         return () => {
             clearTimeout(tempo);

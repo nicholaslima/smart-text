@@ -13,6 +13,8 @@ import api from '../../config/api';
 import { useToast } from '../../context/ToastContext';
 import ValidationErrors from '../../utils/validationErrors';
 
+import { useHistory } from 'react-router-dom';
+
 interface registerUserType{
     nome: string;
     email: string;
@@ -26,6 +28,7 @@ const Signup: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
 
     const { ativarToast } = useToast();
+    const history = useHistory();
 
    const handdleRegister = useCallback( async (data: registerUserType) => {
         try{
@@ -41,6 +44,14 @@ const Signup: React.FC = () => {
             
             await api.post('/user/create',data);
 
+            history.push('/');
+
+            ativarToast({
+                type: 'success',
+                title: 'cadastro realizado',
+                description: 'seu cadastro foi reaizado com sucesso',
+            });
+
         }catch(err){
 
             if(err instanceof yup.ValidationError){
@@ -55,7 +66,7 @@ const Signup: React.FC = () => {
                 description: 'ocorreu um erro no cadastro do usuario',
             });
         }
-    },[ativarToast]);
+    },[ativarToast,history]);
 
 
     return(
