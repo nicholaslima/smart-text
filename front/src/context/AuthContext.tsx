@@ -44,6 +44,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
         localStorage.setItem('@SmartText:token',token);
         localStorage.setItem('@SmartText:user',JSON.stringify(user));
+
         setData({ token,user });
     },[]);
 

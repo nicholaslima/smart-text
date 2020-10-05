@@ -1,10 +1,11 @@
 
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Index from '../pages/index';
-import Signup from '../pages/signup/index';
-import Signin from '../pages/signin/index';
+import { Switch } from 'react-router-dom';
+import Route from './RouteAuth';
+import Jogo from '../pages/jogo';
+import Signup from '../pages/signup';
+import Signin from '../pages/signin';
 import Hanking from '../pages/hanking';
 import Pontuacoes from '../pages/pontuacoes';
 import Conta from '../pages/conta';
@@ -13,12 +14,12 @@ const Routes: React.FC = () => {
     return(
         <>
             <Switch>
-                <Route path='/' exact component={ Index }></Route>
+                <Route path='/' exact component={ Signin }></Route>
+                <Route path='/jogar'  component={ Jogo } isPrivate></Route>
                 <Route path='/signup' component={ Signup }></Route>
-                <Route path='/signin' component={ Signin }></Route>
-                <Route path='/hanking' component={ Hanking }></Route>
-                <Route path='/pontuacoes' component={ Pontuacoes }></Route>
-                <Route path='/conta' component={ Conta }></Route>
+                <Route path='/hanking' component={ Hanking } isPrivate></Route>
+                <Route path='/pontuacoes' component={ Pontuacoes } isPrivate></Route>
+                <Route path='/conta' component={ Conta } isPrivate></Route>
             </Switch>
         </>
     )

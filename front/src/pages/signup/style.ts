@@ -1,5 +1,5 @@
 
-import styled from 'styled-components';
+import styled,{ keyframes } from 'styled-components';
 
 
 export const Input = styled.input`
@@ -31,12 +31,23 @@ export const FormStyled = styled.form`
     }
 `;
 
+const animationLeftToRight = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
 
 export const BlockDescription = styled.div`
     display: flex;
     flex-direction: column;
     padding: 15px;
     width: 600px;
+    animation: ${animationLeftToRight} 1s;
 
     button{
         margin-top: 25px;
@@ -81,7 +92,6 @@ export const Container = styled.div`
         }
     }
 `;
-
 
 
 export const BtnVoltar = styled.button`

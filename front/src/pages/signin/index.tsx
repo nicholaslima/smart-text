@@ -13,17 +13,18 @@ import * as yup  from 'yup';
 import ValidationErrors from '../../utils/validationErrors';
 import { FormHandles } from '@unform/core';
 import { useToast } from '../../context/ToastContext';
-
+import { useHistory } from 'react-router-dom';
 
 interface LoginType{
     email: string;
     senha: string
 }
 
-const Signin:React.FC = () => {
+const Signin: React.FC = () => {
 
     const formRef = useRef<FormHandles>(null);
     const { Login } = useAuth();
+    const history = useHistory();
 
 
     const { ativarToast } = useToast();
@@ -44,20 +45,29 @@ const Signin:React.FC = () => {
                     senha: data.senha,
                 });
 
+                
+                history.push('/jogar');
+
+                ativarToast({
+                    type: 'success',
+                    title: 'login',
+                    description: 'login efetuado com sucesso',
+                });
+
             }catch(err){
                 if(err instanceof yup.ValidationError){
                     const errors = ValidationErrors(err);
                     formRef.current?.setErrors(errors);
-                }else{
-                    ativarToast({
-                        type: 'error',
-                        title: 'erro na autenticação',
-                        description: 'ocorreu um erro ao fazer login',
-                    });
+                    return;
                 }
-  
+            
+                ativarToast({
+                    type: 'error',
+                    title: 'erro na autenticação',
+                    description: 'ocorreu um erro ao fazer login',
+                });
             }   
-    },[ativarToast,Login]);
+    },[ativarToast,Login,history]);
 
 
     return(

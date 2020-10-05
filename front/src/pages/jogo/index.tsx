@@ -7,7 +7,7 @@ import { FiCheckCircle,FiRefreshCw,FiTrash } from 'react-icons/fi';
 import api from '../../config/api';
 
 
-const Index: React.FC = () => {
+const Jogo: React.FC = () => {
 
     
 interface Texto{
@@ -94,4 +94,4 @@ interface Texto{
     )
 }
 
-export default Index;
+export default Jogo;
